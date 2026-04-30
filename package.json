@@ -1,0 +1,55 @@
+{
+  "name": "astro-agent-optimised",
+  "version": "0.1.0",
+  "description": "Agent-optimised output for Astro. Detects AI coding agents and replaces verbose CLI output with compact structured JSON.",
+  "keywords": [
+    "astro-integration",
+    "withastro",
+    "astro-component",
+    "ai",
+    "agent",
+    "claude-code",
+    "cursor",
+    "llm",
+    "tokens"
+  ],
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "bin": {
+    "aao": "./dist/bin/aao.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "astro": ">=4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "astro": "^5.0.0",
+    "typescript": "^5.6.0",
+    "vitest": "^2.1.0"
+  },
+  "engines": {
+    "node": ">=18.17.0"
+  }
+}
