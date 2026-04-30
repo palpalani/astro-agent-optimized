@@ -1,5 +1,13 @@
 # astro-agent-optimised
 
+[![npm version](https://img.shields.io/npm/v/astro-agent-optimised.svg)](https://www.npmjs.com/package/astro-agent-optimised)
+[![npm downloads](https://img.shields.io/npm/dw/astro-agent-optimised.svg)](https://www.npmjs.com/package/astro-agent-optimised)
+[![bundle size](https://img.shields.io/bundlephobia/minzip/astro-agent-optimised)](https://bundlephobia.com/package/astro-agent-optimised)
+[![license](https://img.shields.io/npm/l/astro-agent-optimised.svg)](./LICENSE)
+[![node](https://img.shields.io/node/v/astro-agent-optimised.svg)](https://nodejs.org)
+[![TypeScript](https://img.shields.io/badge/TypeScript-Ready-3178C6?logo=typescript&logoColor=white)](https://www.npmjs.com/package/astro-agent-optimised)
+[![GitHub stars](https://img.shields.io/github/stars/palpalani/astro-agent-optimized?style=social)](https://github.com/palpalani/astro-agent-optimized)
+
 > Agent-optimised output for Astro. Inspired by [laravel/pao](https://github.com/laravel/pao).
 
 When `astro build` runs inside an AI coding agent (Claude Code, Cursor, Gemini CLI, Devin, Windsurf, ...), this integration replaces Astro's verbose human-readable output with one compact JSON line. Token usage drops dramatically. When you run `astro build` in your own terminal, **nothing changes** — you see exactly the output Astro normally produces.
@@ -16,8 +24,20 @@ Human terminal:                 AI agent (Claude Code, etc.):
 
 ## Install
 
+Install as a dev dependency with your package manager of choice — all four are equivalent.
+
 ```sh
+# npm
 npm install astro-agent-optimised --save-dev
+
+# pnpm
+pnpm add -D astro-agent-optimised
+
+# bun
+bun add -d astro-agent-optimised
+
+# yarn
+yarn add -D astro-agent-optimised
 ```
 
 ```js
@@ -40,10 +60,17 @@ That's the entire setup. No flags, no config.
 | `astro dev`   | Astro integration hooks    | ✅     |
 | `astro check` | `npx aao check` CLI wrapper | ✅     |
 
-For `astro check`, use the bundled CLI:
+For `astro check`, use the bundled CLI — runnable without installing via your package manager's one-shot runner:
 
 ```sh
+# npm
 npx aao check
+
+# pnpm
+pnpm dlx aao check
+
+# bun
+bunx aao check
 ```
 
 Inside an agent it emits compact JSON; outside an agent it transparently runs `astro check` with no changes.
@@ -145,6 +172,12 @@ On failure:
 1. At `astro:config:setup`, the integration calls `detect()`. If no agent is found, it returns an inert integration — your terminal output is unchanged.
 2. If an agent is detected, it patches `process.stdout.write` and `process.stderr.write` for the duration of the build, silences Vite's logger, and silences Astro's per-integration logger.
 3. At `astro:build:done` (or on `process.exit` for failures), it emits a single compact JSON object via the original (uncaptured) stdout.
+
+## Links
+
+- npm: https://www.npmjs.com/package/astro-agent-optimised
+- GitHub: https://github.com/palpalani/astro-agent-optimized
+- Issues: https://github.com/palpalani/astro-agent-optimized/issues
 
 ## Acknowledgements
 
